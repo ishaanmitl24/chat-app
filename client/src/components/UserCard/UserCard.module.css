@@ -1,0 +1,53 @@
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 15px;
+  transition: all 0.8s;
+  text-decoration: none;
+}
+.main:hover {
+  background-color: rgba(97, 94, 240, 0.1);
+}
+.user {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+}
+.user img {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+.user_details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.user_details .name {
+  position: relative;
+  color: #000000;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.user_details .last_message {
+  position: relative;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.last_seen {
+  position: relative;
+  font-family: "Asap", sans-serif;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+}

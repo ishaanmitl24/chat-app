@@ -1,0 +1,77 @@
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 15px;
+  transition: all 0.8s;
+  text-decoration: none;
+}
+.main:hover {
+  background-color: rgba(97, 94, 240, 0.1);
+}
+.user {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+}
+.user img {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+.user_details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.user_details .name {
+  position: relative;
+  color: #000000;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.user_details .last_message {
+  position: relative;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+}
+.button_group {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.button_group button {
+  position: relative;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  align-self: center;
+  padding: 0.6rem 1rem;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.accept_friend {
+  background-color: #5775e1;
+  color: white;
+  transition: 0.3s all;
+}
+.accept_friend:hover {
+  background-color: #3f65ee;
+}
+.reject_friend {
+  background-color: #f9c253;
+  transition: 0.3s all;
+  color: black;
+}
+.reject_friend:hover {
+  background-color: #f7ba41;
+}

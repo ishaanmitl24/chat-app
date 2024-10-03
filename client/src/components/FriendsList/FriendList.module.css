@@ -1,0 +1,63 @@
+.friend-list-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.pending_requests {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.pending_requests_headers {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem 1rem;
+  background-color: #f7cb73;
+  border-radius: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.request_title {
+  font-size: 18px;
+  align-self: center;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+.pending_data {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.no-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.friends {
+  display: flex;
+  flex-direction: column;
+}
+
+.friends_headers {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem 1rem;
+  background-color: #5775e1;
+  border-radius: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.friend_title {
+  font-size: 18px;
+  align-self: center;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: white;
+}

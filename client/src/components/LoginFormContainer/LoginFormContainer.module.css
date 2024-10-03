@@ -1,0 +1,29 @@
+.main {
+  position: relative;
+  height: 100%;
+  padding-top: 3rem;
+  box-sizing: border-box;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  padding: 4rem 0;
+  box-sizing: border-box;
+}
+.forgot_password {
+  position: relative;
+  bottom: 1rem;
+  width: 432px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forgot_password a {
+  text-decoration: none;
+  color: #5775e1;
+}

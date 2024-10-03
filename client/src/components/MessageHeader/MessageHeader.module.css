@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 25px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.19);
+}
+.close_chat {
+  display: flex;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}

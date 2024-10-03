@@ -1,0 +1,17 @@
+.main {
+  position: relative;
+  height: 100%;
+  padding-top: 3rem;
+  box-sizing: border-box;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  padding: 4rem 0;
+  box-sizing: border-box;
+}

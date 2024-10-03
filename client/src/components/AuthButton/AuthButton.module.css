@@ -1,0 +1,27 @@
+.main {
+  width: 432px;
+  padding: 1rem 0;
+  color: #5a5a5a;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.login {
+  background: transparent;
+  background-color: none;
+  border: 1px solid #5a5a5a;
+  position: relative;
+  bottom: 1rem;
+}
+
+.signup {
+  background-color: #5775e1;
+  color: white;
+  border: none;
+}
+.signup:hover {
+  background-color: #6a85e9;
+}
