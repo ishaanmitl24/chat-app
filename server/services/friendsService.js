@@ -42,7 +42,7 @@ const getSearchPeopleService = async (search, page, userId) => {
     userIdsInFriendsAndRequest.push(pendingRequests[i].userId.toString());
   }
 
-  const userData = await UserModel.find({
+  const userData = await UserModel.UserModel.find({
     $and: [
       {
         _id: {
@@ -80,7 +80,7 @@ const getSearchPeopleService = async (search, page, userId) => {
         hashId: item.hashId,
       };
     });
-    const totalUsersCount = await UserModel.countDocuments({
+    const totalUsersCount = await UserModel.UserModel.countDocuments({
       $and: [
         {
           _id: {
@@ -110,7 +110,10 @@ const getSearchPeopleService = async (search, page, userId) => {
 };
 
 const addFriendService = async (sendersId, receiversId) => {
-  const checSenderIdExistorNot = await UserModel.findOne({ _id: sendersId });
+  const checSenderIdExistorNot = await UserModel.findOne({
+    query: { _id: sendersId },
+    projection: {},
+  });
   if (!checSenderIdExistorNot) {
     return {
       status: 422,
@@ -121,7 +124,10 @@ const addFriendService = async (sendersId, receiversId) => {
     };
   }
 
-  const checkReceiverExistOrNot = await UserModel.findOne({ _id: receiversId });
+  const checkReceiverExistOrNot = await UserModel.findOne({
+    query: { _id: receiversId },
+    projection: {},
+  });
   if (!checkReceiverExistOrNot) {
     return {
       status: 422,
@@ -189,7 +195,10 @@ const getPendingRequestsServices = async (userId, page = 1) => {
   const newPage = parseInt(page);
   const skip = (newPage - 1) * pendingRequestLimit;
 
-  const checkUser = await UserModel.findOne({ _id: userId });
+  const checkUser = await UserModel.findOne({
+    query: { _id: userId },
+    projection: {},
+  });
   if (!userId) {
     return {
       status: 422,
@@ -322,8 +331,11 @@ const getFriendsService = async (userId, page = 1) => {
       (item) => item !== userId
     );
     const getFriendsUserData = await UserModel.find({
-      _id: { $in: getFriendsUserIdsArr },
-      isDeleted: false,
+      query: {
+        _id: { $in: getFriendsUserIdsArr },
+        isDeleted: false,
+      },
+      projection: {},
     });
 
     const modifiedFriendsData = getFriendsUserData.map((user) => {

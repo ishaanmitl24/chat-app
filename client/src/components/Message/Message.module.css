@@ -1,0 +1,57 @@
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 1rem 14px;
+  box-sizing: border-box;
+}
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  font-weight: 600;
+}
+.friend_container {
+  display: flex;
+  gap: 10px;
+}
+.user_container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+}
+.time {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06rem;
+  margin-left: 5px;
+}
+.message_container {
+  display: flex;
+  flex-direction: column;
+  max-width: 45%;
+  gap: 5px;
+}
+.friend_message {
+  align-self: flex-start;
+  padding: 10px;
+  background-color: #5775e1;
+  color: white;
+  border-radius: 0 10px 10px 10px;
+  font-size: 14px;
+}
+
+.userMessage {
+  align-self: flex-end;
+  padding: 10px;
+  background-color: grey;
+  color: white;
+  border-radius: 10px 0 10px 10px;
+  font-size: 14px;
+}

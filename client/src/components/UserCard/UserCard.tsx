@@ -1,21 +1,28 @@
 import React from "react";
 import classes from "../UserCard/UserCard.module.css";
-import { User } from "../../models/user";
+import { userMessagesData } from "../../models/user";
 import { NavLink } from "react-router-dom";
 import Avaatar from "../Avaatar/Avaatar";
 
-const UserCard: React.FC<{ user: User }> = (props) => {
+const UserCard: React.FC<{ user: userMessagesData }> = (props) => {
   const { user } = props;
   return (
-    <NavLink to={`/message/${user.id}`} className={classes.main}>
+    <NavLink
+      to={`/message/${user.messageConnectionId}`}
+      className={classes.main}
+    >
       <div className={classes.user}>
-        <Avaatar image={user.image} name={user.name} />
+        <Avaatar image={""} name={user.user.name} />
         <div className={classes.user_details}>
-          <span className={classes.name}>{user.name}</span>
-          <span className={classes.last_message}>{user.message}</span>
+          <span className={classes.name}>{user?.user?.name}</span>
+          <span className={classes.last_message}>
+            {user?.messageData?.message
+              ? user?.messageData?.message
+              : `Start your conversation with ${user.user.name} 🙂‍↕️`}
+          </span>
         </div>
       </div>
-      <div className={classes.last_seen}>{user.time}</div>
+      <div className={classes.last_seen}>{user?.messageData?.time ?? ""}</div>
     </NavLink>
   );
 };

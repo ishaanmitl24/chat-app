@@ -15,6 +15,11 @@ const FriendsDataModel = mongoose.model(
         required: true,
         default: [],
       },
+      messagesId: {
+        type: Array,
+        required: true,
+        default: [],
+      },
       isDeleted: {
         type: Boolean,
         required: true,
@@ -29,9 +34,15 @@ const FriendsDataModel = mongoose.model(
 
 module.exports = {
   FriendsDataModel,
-  find: ({ query, projection }) => FriendsDataModel.find({ query, projection }),
-  findOne: ({ query, projection }) =>
-    FriendsDataModel.findOne({ query, projection }),
+  find: async ({ query, projection }) =>
+    FriendsDataModel.find(query, projection),
+  findOne: async ({ query, projection }) =>
+    FriendsDataModel.findOne(query, projection),
+  updateOne: async ({ query, updateDict }) =>
+    FriendsDataModel.updateOne(query, updateDict),
+  updateMany: async ({ query, updateDict }) =>
+    FriendsDataModel.updateMany(query, updateDict),
+  countDocuments: async ({ query }) => FriendsDataModel.countDocuments(query),
   getFriends: ({ userId, skip, limit, pagination = false }) => {
     const pipeline = [
       {

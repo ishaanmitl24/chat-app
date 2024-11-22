@@ -1,16 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import Avaatar from "../Avaatar/Avaatar";
 import { useAppSelector } from "../../store";
 import classes from "../FriendsCard/FriendsCard.module.css";
 import { Icon } from "@iconify/react";
+import { CircularProgress } from "@mui/material";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const FriendsCard: React.FC<{
   name: string;
   email: string;
   id: string;
 }> = (props) => {
-  const { name, email } = props;
-  //   const { userId, token } = useAppSelector((state) => state.auth);
+  const { name, email, id } = props;
+  const [loading, setLoading] = useState<boolean>(false);
+  const { userId, token } = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  const createChatId = async (receiverId: string) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `http://localhost:4001/messages/create-chat`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            senderId: userId,
+            receiverId,
+          }),
+        }
+      );
+      const responseData = await response.json();
+      if (responseData?.ok) {
+        const { messageConnectionId } = responseData?.data;
+        navigate(`/message/${messageConnectionId}`);
+      }
+    } catch (err) {
+      toast.error("An error occurred");
+    }
+    setLoading(false);
+  };
 
   return (
     <div className={classes.main}>
@@ -22,11 +55,14 @@ const FriendsCard: React.FC<{
         </div>
       </div>
       <div className={classes.button_group}>
-        <button>
-          <Icon
-            style={{ width: "25px", height: "25px" }}
-            icon="bi:three-dots-vertical"
-          />
+        <button onClick={() => createChatId(id)}>
+          {!loading && (
+            <Icon
+              style={{ width: "28px", height: "28px", color: "#5775e1" }}
+              icon="mage:message-dots-round"
+            />
+          )}
+          {loading && <CircularProgress />}
         </button>
       </div>
     </div>

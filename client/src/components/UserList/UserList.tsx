@@ -3,6 +3,7 @@ import { userDummyArr } from "../../data/data";
 import UserCard from "../UserCard/UserCard";
 import styled from "styled-components";
 import Pagination from "../Pagination/Pagination";
+import { userMessagesData } from "../../models/user";
 
 const UserListContainer = styled.div`
   position: relative;
@@ -10,19 +11,20 @@ const UserListContainer = styled.div`
   margin-top: 15px;
 `;
 
-const UserList: React.FC<{}> = () => {
-  const [page, setPage] = useState<number>(1);
-  const [pages, setPages] = useState<number>(2);
-  const itemsPerPage = 7;
-  const start = (page - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
+const UserList: React.FC<{
+  userData: userMessagesData[];
+  page: number;
+  pages: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+}> = (props) => {
+  const { page, pages, setPage, userData } = props;
 
   return (
     <UserListContainer>
-      {userDummyArr.slice(start, end).map((user) => (
-        <UserCard key={user.id} user={user} />
+      {userData.map((user) => (
+        <UserCard key={user.messageConnectionId} user={user} />
       ))}
-      <Pagination page={page} pages={pages} setPage={setPage} />
+      {pages > 1 && <Pagination page={page} pages={pages} setPage={setPage} />}
     </UserListContainer>
   );
 };

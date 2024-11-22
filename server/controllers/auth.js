@@ -3,13 +3,14 @@ const { signupService, loginService } = require("../services/authService");
 const signupUserContoller = async (req, res, next) => {
   const { name, email, password } = req.body;
   if (!email || !password || !name) {
-    res
-      .status(422)
-      .json({ msg: "Invalid Email or Password or name!", ok: false });
+    res.invalid({ msg: "Invalid Email or Password or name!" });
   }
   try {
-    const response = await signupService(name, email, password);
-    res.status(response.status).json(response.data);
+    const { data, status } = await signupService(name, email, password);
+    if (data?.ok) {
+      res.success({ msg: data?.msg });
+    }
+    res.failure({ msg: data?.msg });
   } catch (err) {
     next(err);
   }
@@ -18,11 +19,11 @@ const signupUserContoller = async (req, res, next) => {
 const loginController = async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    res.status(422).json({ msg: "Invalid Email or Password!", ok: false });
+    res.invalid({ msg: "Invalid Email or Password!" });
   }
   try {
     const response = await loginService(email, password);
-    res.status(response.status).json(response.data);
+    res.status(response?.status).json(response?.data);
   } catch (err) {
     next(err);
   }

@@ -57,3 +57,39 @@ export interface friendsData {
   email: string;
   hashId: string;
 }
+
+export interface userMessagesData {
+  friendUserId: string;
+  messageConnectionId: string;
+  messageData: {
+    _id: string;
+    message: string;
+    time: string;
+    userId: string;
+  };
+  user: {
+    email: string;
+    hashId: string;
+    name: string;
+    _id: string;
+  };
+}
+
+export interface messageData {
+  messageConnectionId: string;
+  message: string;
+  read: boolean;
+  createdAt: string;
+  updatedAt: string;
+  userId: string;
+  name: string;
+  email: string;
+  hashId: string;
+}
+
+export interface friend {
+  _id: string;
+  name: string;
+  email: string;
+  hashId: string;
+}

@@ -7,7 +7,10 @@ const { FriendsDataModel } = require("../models/friendsData");
 const { createToken } = require("../utils/createToken");
 
 const signupService = async (name, email, password) => {
-  const checkUserIsAlreadyExist = await UserModel.findOne({ email: email });
+  const checkUserIsAlreadyExist = await UserModel.findOne({
+    query: { email: email },
+    projection: {},
+  });
   if (checkUserIsAlreadyExist) {
     return {
       status: 422,
@@ -20,7 +23,7 @@ const signupService = async (name, email, password) => {
   const hashPassword = await bycrypt.hash(password, 10);
   const hashId = uuidv4();
 
-  const newUser = new UserModel({
+  const newUser = new UserModel.UserModel({
     name,
     email,
     password: hashPassword,
@@ -48,7 +51,10 @@ const signupService = async (name, email, password) => {
 
 const loginService = async (email, password) => {
   console.log(email, password);
-  const checkUserExistOrNot = await UserModel.findOne({ email });
+  const checkUserExistOrNot = await UserModel.findOne({
+    query: { email },
+    projection: {},
+  });
 
   if (!checkUserExistOrNot) {
     return {

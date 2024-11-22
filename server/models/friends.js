@@ -13,6 +13,9 @@ const FriendsModel = mongoose.model(
         type: Array,
         required: true,
       },
+      messageConnectionId: {
+        type: mongoose.Schema.Types.ObjectId,
+      },
       isDeleted: {
         type: Boolean,
         required: true,
@@ -25,4 +28,12 @@ const FriendsModel = mongoose.model(
   )
 );
 
-module.exports = { FriendsModel };
+module.exports = {
+  FriendsModel,
+  find: async ({ query, projection }) =>
+    FriendsModel.find(query, projection).lean(),
+  findOne: async ({ query, projection }) =>
+    FriendsModel.findOne(query, projection).lean(),
+  updateOne: async ({ query, updateDict }) =>
+    FriendsModel.updateOne(query, updateDict),
+};

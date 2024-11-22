@@ -32,4 +32,12 @@ const UserModel = mongoose.model(
   )
 );
 
-module.exports = UserModel;
+module.exports = {
+  UserModel,
+  findOne: async ({ query, projection }) =>
+    UserModel.findOne(query, projection).lean(),
+  find: async ({ query, projection }) =>
+    UserModel.find(query, projection).lean(),
+  updateOne: async ({ query, updateDict }) =>
+    UserModel.updateOne(query, updateDict),
+};

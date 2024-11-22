@@ -75,7 +75,7 @@ const App = () => {
           ),
         },
         {
-          path: "/message/:userId",
+          path: "/message/:messageConnectionId",
           element: (
             <ProtectedRoute path="/profile">
               <Message />

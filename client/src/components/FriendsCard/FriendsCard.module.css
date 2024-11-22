@@ -54,10 +54,10 @@
   cursor: pointer;
   border: none;
   align-self: center;
-  padding: 0.6rem 1rem;
   letter-spacing: 0.05em;
   border-radius: 4px;
   font-weight: 600;
+  background: none;
 }
 .accept_friend {
   background-color: #5775e1;
